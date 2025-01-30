@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Group Tables - Client SDK Examples | Integration Theme</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/sdk-example/group-tables.css">
+    <link rel="stylesheet" href="assets/css/vendor/highlight.vs2015.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap">
+
+</head>
+
+<body class="example-group-tables">
+
+    <header>
+
+        <nav class="main-nav">
+
+            <a href="index.html" title="Home | Integration Theme" class="logo">
+                <img src="assets/ui/logo.svg" alt="DriveWorks" />
+            </a>
+
+            <label for="menu-state" class="menu-toggle" title="Menu">
+                <svg class="icon"><use xlink:href="assets/ui/icons.svg#menu"></use></svg>
+            </label>
+            <input type="checkbox" id="menu-state" class="menu-state" />
+
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="home.html" class="current">Client SDK Examples</a></li>
+                <li><a href="example-sites">Example Sites</a></li>
+                <li><a href="help/client">Client SDK Docs</a></li>
+                <li><a href="help/server">Server API Docs</a></li>
+                <li>
+                    <a href="https://docs.driveworkspro.com/Topic/IntegrationThemeLive" target="_blank">
+                        <svg class="icon"><use xlink:href="assets/ui/icons.svg#external"></use></svg>
+                        DriveWorks Help
+                    </a>
+                </li>
+            </ul>
+
+        </nav>
+
+        <nav class="sub-nav">
+
+            <label for="sub-nav-state" class="sub-nav-toggle" title="Menu">
+                <span>Choose an SDK Example</span>
+                <svg class="icon"><use xlink:href="assets/ui/icons.svg#arrow-down"></use></svg>
+            </label>
+            <input type="checkbox" id="sub-nav-state" />
+
+            <ul>
+                <li><a href="home.html">Intro</a></li>
+                <li><a href="login.html">Login &amp; Logout</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="specifications.html">Specifications</a></li>
+                <li><a href="forms.html">Specification Forms</a></li>
+                <li><a href="actions.html">Operations &amp; Transitions</a></li>
+                <li><a href="variablesconstants.html">Variables &amp; Constants</a></li>
+                <li><a href="macros.html">Macros</a></li>
+                <li><a href="documents.html">Documents</a></li>
+                <li><a href="reports.html">Reports</a></li>
+                <li><a href="group-tables.html" class="current">Group Tables</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="odata.html">OData</a></li>
+            </ul>
+
+        </nav>
+
+    </header>
+
+    <div class="intro">
+        <div class="row">
+            <h1>Group Tables</h1>
+            <p class="margin-bottom-large">This page provides example code for working with Group Tables in the Integration Theme.</p>
+
+            <div class="note-box">
+                <p class="margin-bottom">For Group Tables to be accessed via the API, they <strong><u>must</u></strong> be listed in the <code class="dark">&lt;permissions&gt;</code> block of <code class="dark">DriveWorksConfigUser.xml</code> and available to the current user's team.</p>
+                <button data-code-toggle="permissions" class="code-toggle">
+                    <svg class="icon"><use xlink:href="assets/ui/icons.svg#code"></use></svg>
+                    <span>Show</span> Example Permissions
+                </button>
+                <div data-code-preview="permissions" class="code-preview inline">
+                    <pre class="language-xml"><code data-src="assets/data/sdk-example/group-tables.xml"></code></pre>
+                </div>
+                <p>For full configuration guidance, see <a href="https://docs.driveworkspro.com/Topic/IntegrationThemeSettings#Permissions" target="_blank">Integration Theme Settings</a> in DriveWorks Pro Help.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <main class="row">
+
+        <div id="config-message" class="margin-bottom-large">
+            The shared <a href="config.js" target="_blank" title="View config file"><code>config.js</code></a> file for these examples is incomplete. Enter your own settings for the examples to function.
+        </div>
+
+        <div class="code-heading margin-bottom">
+            <h2 id="get-group-tables">List Group Tables</h2>
+
+            <button data-code-toggle="group-tables" class="code-toggle">
+                <svg class="icon"><use xlink:href="assets/ui/icons.svg#code"></use></svg>
+                <span>Show</span> Sample Code
+            </button>
+
+            <a class="doc-link" href="help/client/classes/DriveWorksLiveClient.html#getGroupTables" target="_blank">
+                View in SDK Docs
+                <svg class="icon"><use xlink:href="assets/ui/icons.svg#external"></use></svg>
+            </a>
+
+            <div data-code-preview="group-tables" class="code-preview">
+                <button data-code-type="basic" class="active">Basic</button>
+                <button data-code-type="advanced">Advanced</button>
+                <div data-code-type="basic">
+                    <pre class="language-javascript"><code data-src="assets/js/sdk-snippet/group-tables.js"></code></pre>
+                </div>
+                <div data-code-type="advanced" class="hidden">
+                    <pre class="language-javascript"><code data-src="assets/js/sdk-example/group-tables.js"></code></pre>
+                    <pre class="language-html"><code data-src="assets/html/sdk-example/group-tables.html"></code></pre>
+                    <pre class="language-css"><code data-src="assets/css/sdk-example/group-tables.css"></code></pre>
+                </div>
+            </div>
+        </div>
+
+<!--
+    -----------------------------
+        START EXAMPLE
+    -----------------------------
+-->
+
+    <p class="margin-bottom-large">Get raw Group Table data as a string, then process to display as a table.</p>
+
+    <label for="table-select">Select Group Table:</label>
+    <select id="table-select" class="margin-bottom-xlarge">
+        <option>Loading...</option>
+    </select>
+
+    <div id="table-output"></div>
+
+    <script src="../DriveWorksLiveIntegrationClient.min.js"></script>
+    <script src="config.js"></script>
+    <script src="assets/js/sdk-example/group-tables.js"></script>
+
+<!--
+    -----------------------------
+        END EXAMPLE
+    -----------------------------
+-->
+
+    </main>
+
+    <footer>&copy; DriveWorks Ltd 2024. All rights reserved.</footer>
+
+    <!-- Help File Scripts -->
+    <script src="assets/js/vendor/highlight.min.js"></script>
+    <script src="assets/js/help-file-functions.js"></script>
+
+</body>
+
+</html>

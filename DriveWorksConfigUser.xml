@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <staticFilesPath>C:\ProgramData\DriveWorks\21\Live\Themes\Live\example-sites\corporate-website</staticFilesPath>
+  <connections>
+    <individualGroupAlias name="CmTrucksLive" path="C:\PDM\CM TRUCKS DWS\CM TRUCKS.drivegroup" username="Admin" password="Admin" />
+  </connections>
+</configuration>
+

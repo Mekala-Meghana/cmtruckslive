@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Client SDK Examples | Integration Theme</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/vendor/highlight.vs2015.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap">
+
+</head>
+
+<body class="example-home">
+
+    <header>
+
+        <nav class="main-nav">
+
+            <a href="index.html" title="Home | Integration Theme" class="logo">
+                <img src="assets/ui/logo.svg" alt="DriveWorks" />
+            </a>
+
+            <label for="menu-state" class="menu-toggle" title="Menu">
+                <svg class="icon"><use xlink:href="assets/ui/icons.svg#menu"></use></svg>
+            </label>
+            <input type="checkbox" id="menu-state" class="menu-state" />
+
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="home.html" class="current">Client SDK Examples</a></li>
+                <li><a href="example-sites">Example Sites</a></li>
+                <li><a href="help/client">Client SDK Docs</a></li>
+                <li><a href="help/server">Server API Docs</a></li>
+                <li>
+                    <a href="https://docs.driveworkspro.com/Topic/IntegrationThemeLive" target="_blank">
+                        <svg class="icon"><use xlink:href="assets/ui/icons.svg#external"></use></svg>
+                        DriveWorks Help
+                    </a>
+                </li>
+            </ul>
+
+        </nav>
+
+        <nav class="sub-nav">
+
+            <label for="sub-nav-state" class="sub-nav-toggle" title="Menu">
+                <span>Choose an SDK Example</span>
+                <svg class="icon"><use xlink:href="assets/ui/icons.svg#arrow-down"></use></svg>
+            </label>
+            <input type="checkbox" id="sub-nav-state" />
+
+            <ul>
+                <li><a href="home.html" class="current">Intro</a></li>
+                <li><a href="login.html">Login &amp; Logout</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="specifications.html">Specifications</a></li>
+                <li><a href="forms.html">Specification Forms</a></li>
+                <li><a href="actions.html">Operations &amp; Transitions</a></li>
+                <li><a href="variablesconstants.html">Variables &amp; Constants</a></li>
+                <li><a href="macros.html">Macros</a></li>
+                <li><a href="documents.html">Documents</a></li>
+                <li><a href="reports.html">Reports</a></li>
+                <li><a href="group-tables.html">Group Tables</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="odata.html">OData</a></li>
+            </ul>
+
+        </nav>
+
+    </header>
+
+    <div class="intro">
+        <div class="row">
+
+            <h1>Client SDK Examples</h1>
+            <p class="margin-bottom-large">This collection of example components provide basic starting blocks for using the Integration Theme in DriveWorks Live.</p>
+            <p>We provide these examples as a guideline to assist you in getting started quickly, with sample code ready to copy.</p>
+            <ul>
+                <li>'Basic' sample code demonstrates core functionality.</li>
+                <li>'Advanced' sample code mirrors what is shown in each live example.</li>
+            </ul>
+
+            <p>Please note these small examples are intended as reference, and a starting point for production-ready code.</p>
+
+        </div>
+    </div>
+
+    <main class="row">
+
+        <div id="config-message" class="margin-bottom-xlarge">
+            The shared <a href="config.js" target="_blank" title="View config file"><code>config.js</code></a> file for these examples is incomplete. Enter your own settings for the examples to function.
+        </div>
+
+        <h2 class="margin-bottom-large">Before You Begin</h2>
+
+        <h3 id="theme-setup">1) Integration Theme Setup</h3>
+
+        <p>To access DriveWorks Groups using the Integration Theme, you must first register a Group Alias for each Group using the <strong>DriveWorksConfigUser.xml</strong> file on the host machine:</p>
+        <p><code class="medium">C:\ProgramData\DriveWorks\[Version]\Live\Themes\Integration\DriveWorksConfigUser.xml</code></p>
+        <p class="margin-bottom-xlarge">
+            More information about the settings in this file can be found in the
+            <a href="https://docs.driveworkspro.com/Topic/IntegrationThemeSettings" target="_blank">online help file</a>.
+        </p>
+
+        <h3 id="config-file">2) Configuration File</h3>
+
+        <p>These simple examples all use a single, shared <code><a href="config.js" target="_blank">config.js</a></code> file.</p>
+
+        <div id="current-config">
+            <button data-code-toggle="config" class="code-toggle">
+                <svg class="icon"><use xlink:href="assets/ui/icons.svg#code"></use></svg>
+                <span>Show</span> current config.js
+            </button>
+            <div data-code-preview="config" class="code-preview inline">
+                <pre class="language-javascript"><code class="config-preview" data-src="config.js"></code></pre>
+            </div>
+        </div>
+
+        <p>This can be found in the root of the folder you selected when setting up the Integration Theme, at the point of selecting "Copy Client SDK Examples to this folder".</p>
+        <p>This <code>config.js</code> file needs to know:</p>
+        <ul>
+            <li>The <strong>Server URL</strong> of your Integration Theme - most likely the same URL hosting this guide.</li>
+            <li>The <strong>Group Alias</strong> you wish to use - set up in <strong>DriveWorksConfigUser.xml</strong>.</li>
+            <li>A <strong>Project Name</strong> - used to demonstrate certain functionality.</li>
+        </ul>
+
+        <p>You can also set user credentials in this file - if a default has not been set for the chosen Group Alias.</p>
+        <p class="margin-bottom-xlarge">
+            <strong>Note:</strong> Using a centralized, shared configuration file is merely a suggestion to assist with easy maintenance.<br />
+            Configuration options can be stored alongside code, or passed directly into methods.
+        </p>
+
+        <hr />
+
+        <h2 id="basic-examples">Basic Examples</h2>
+
+        <div class="tile-grid">
+            <a class="tile-link" href="login.html">Login & Logout</a>
+            <a class="tile-link" href="projects.html">Projects</a>
+            <a class="tile-link" href="specifications.html">Specifications</a>
+            <a class="tile-link" href="forms.html">Specification Forms</a>
+            <a class="tile-link" href="actions.html">Operations &amp; Transitions</a>
+            <a class="tile-link" href="variablesconstants.html">Variables &amp; Constants</a>
+            <a class="tile-link" href="macros.html">Macros</a>
+            <a class="tile-link" href="documents.html">Documents</a>
+            <a class="tile-link" href="reports.html">Reports</a>
+            <a class="tile-link" href="group-tables.html">Group Tables</a>
+            <a class="tile-link" href="events.html">Events</a>
+            <a class="tile-link" href="odata.html">OData</a>
+        </div>
+
+    </main>
+
+    <footer>&copy; DriveWorks Ltd 2024. All rights reserved.</footer>
+
+    <!-- JavaScript Client SDK Path -->
+    <script src="http://www.cmtruckslive.com/DriveWorksLiveIntegrationClient.min.js"></script>
+
+    <!-- SDK Examples Config -->
+    <script src="config.js"></script>
+
+    <!-- Help File Scripts -->
+    <script src="assets/js/vendor/highlight.min.js"></script>
+    <script src="assets/js/help-file-functions.js"></script>
+
+</body>
+
+</html>

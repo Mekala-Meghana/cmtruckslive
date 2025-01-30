@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>OData - Client SDK Examples | Integration Theme</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/sdk-example/odata.css">
+    <link rel="stylesheet" href="assets/css/vendor/highlight.vs2015.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap">
+
+</head>
+
+<body class="example-odata">
+
+    <header>
+
+        <nav class="main-nav">
+
+            <a href="index.html" title="Home | Integration Theme" class="logo">
+                <img src="assets/ui/logo.svg" alt="DriveWorks" />
+            </a>
+
+            <label for="menu-state" class="menu-toggle" title="Menu">
+                <svg class="icon"><use xlink:href="assets/ui/icons.svg#menu"></use></svg>
+            </label>
+            <input type="checkbox" id="menu-state" class="menu-state" />
+
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="home.html" class="current">Client SDK Examples</a></li>
+                <li><a href="example-sites">Example Sites</a></li>
+                <li><a href="help/client">Client SDK Docs</a></li>
+                <li><a href="help/server">Server API Docs</a></li>
+                <li>
+                    <a href="https://docs.driveworkspro.com/Topic/IntegrationThemeLive" target="_blank">
+                        <svg class="icon"><use xlink:href="assets/ui/icons.svg#external"></use></svg>
+                        DriveWorks Help
+                    </a>
+                </li>
+            </ul>
+
+        </nav>
+
+        <nav class="sub-nav">
+
+            <label for="sub-nav-state" class="sub-nav-toggle" title="Menu">
+                <span>Choose an SDK Example</span>
+                <svg class="icon"><use xlink:href="assets/ui/icons.svg#arrow-down"></use></svg>
+            </label>
+            <input type="checkbox" id="sub-nav-state" />
+
+            <ul>
+                <li><a href="home.html">Intro</a></li>
+                <li><a href="login.html">Login &amp; Logout</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="specifications.html">Specifications</a></li>
+                <li><a href="forms.html">Specification Forms</a></li>
+                <li><a href="actions.html">Operations &amp; Transitions</a></li>
+                <li><a href="variablesconstants.html">Variables &amp; Constants</a></li>
+                <li><a href="macros.html">Macros</a></li>
+                <li><a href="documents.html">Documents</a></li>
+                <li><a href="reports.html">Reports</a></li>
+                <li><a href="group-tables.html">Group Tables</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="odata.html" class="current">OData</a></li>
+            </ul>
+
+        </nav>
+
+    </header>
+
+    <div class="intro">
+        <div class="row">
+            <h1>OData</h1>
+            <p>This page provides example code for performing OData queries in the Integration Theme.</p>
+            <p class="margin-bottom-large">If you are unfamiliar with OData and how to use it, there is great <a href="https://www.odata.org/getting-started/basic-tutorial/#queryData" target="_blank">official documentation</a> available.</p>
+            <p class="tip-box"><strong>&#128161; Tip:</strong> Combine queries using & (ampersand). For example: <code class="dark">$top=2&$skip=5</code>. <a href="#combined">Read more</a></p>
+        </div>
+    </div>
+
+    <main class="row">
+
+        <div id="config-message" class="margin-bottom-xlarge">
+            The shared <a href="config.js" target="_blank" title="View config file"><code>config.js</code></a> file for these examples is incomplete. Enter your own settings for the examples to function.
+        </div>
+
+        <div class="note-box margin-bottom-xlarge">
+            <h3>How this example works:</h3>
+            <p>Each input below represents the optional <strong>oDataQueryString</strong> parameter for supported methods (see <a href="help/client/classes/DriveWorksLiveClient.html" target="_blank">Client SDK Docs</a>).</p>
+            <p>For each example, the following code will be run when the input value changes - with the OData query string applied:</p>
+            <p class="margin-bottom-large"><code>await client.getAllSpecifications(GROUP_ALIAS, <b>"oDataQueryString"</b>);</code></p>
+            <p>Edit the <strong>Query String</strong> inputs to experiment with custom query string - the results shown will update in real time.</p>
+        </div>
+
+        <h3 id="jump-links">Jump to Content</h3>
+        <ul>
+            <li><a href="#filter">$filter</a></li>
+            <li><a href="#orderby">$orderby</a></li>
+            <li><a href="#select">$select</a></li>
+            <li><a href="#skip">$skip</a></li>
+            <li><a href="#top">$top</a></li>
+            <li><a href="#combined">Combined Queries</a></li>
+            <li><a href="#query-builder">Custom Query Builder</a></li>
+        </ul>
+
+        <hr class="large" />
+
+        <!-- $filter -->
+        <div class="code-heading">
+            <h2 id="filter" class="query-name">$filter</h2>
+
+            <button data-code-toggle="filter" class="code-toggle">
+                <svg class="icon"><use xlink:href="assets/ui/icons.svg#code"></use></svg>
+                <span>Show</span> Sample Code
+            </button>
+            <div data-code-preview="filter" class="code-preview">
+                <button data-code-type="basic" class="active">Basic</button>
+                <div data-code-type="basic">
+                    <pre class="language-javascript"><code data-src="assets/js/sdk-snippet/odata-filter.js"></code></pre>
+                </div>
+            </div>
+        </div>
+
+        <p>$filter supports various operators to control the response.</p>
+        <button data-reveal-hidden-content class="link-button">Show basic operators</button>
+        <div class="hidden scroll-container">
+            <table class="simple-table">
+                <tr>
+                    <th>Operator</th>
+                    <th>Description</th>
+                    <th>Example String</th>
+                </tr>
+                <tr>
+                    <td>eq</td>
+                    <td>Equal to</td>
+                    <td>$filter=stateName eq 'Complete'</td>
+                </tr>
+                <tr>
+                    <td>ne</td>
+                    <td>Not equal to</td>
+                    <td>$filter=stateType ne 'Running'</td>
+                </tr>
+                <tr>
+                    <td>gt</td>
+                    <td>Greater than</td>
+                    <td>$filter=id gt 1000</td>
+                </tr>
+                <tr>
+                    <td>ge</td>
+                    <td>Greater than or equal</td>
+                    <td>$filter=id ge 1000</td>
+                </tr>
+                <tr>
+                    <td>lt</td>
+                    <td>Less than</td>
+                    <td>$filter=id lt 20</td>
+                </tr>
+                <tr>
+                    <td>le</td>
+                    <td>Less than or equal</td>
+                    <td>$filter=id le 100</td>
+                </tr>
+                <tr>
+                    <td>contains</td>
+                    <td>Value contains</td>
+                    <td>$filter=contains(originalProjectName,'Demo')</td>
+                </tr>
+                <tr>
+                    <td>startswith</td>
+                    <td>Value starts with</td>
+                    <td>$filter=startswith(originalProjectName,'Demo')</td>
+                </tr>
+                <tr>
+                    <td>endswith</td>
+                    <td>Value ends with</td>
+                    <td>$filter=endswith(originalProjectName,'Demo')</td>
+                </tr>
+                <tr>
+                    <td>and</td>
+                    <td>Logical AND</td>
+                    <td>$filter=creatorName eq 'Guest' and stateName eq 'Complete'</td>
+                </tr>
+                <tr>
+                    <td>or</td>
+                    <td>Logical OR</td>
+                    <td>$filter=stateName eq 'Complete' or (editorName eq 'Admin' and contains(originalProjectName,'Demo'))</td>
+                </tr>
+                <tr>
+                    <td>not</td>
+                    <td>Logical NOT</td>
+                    <td>$filter=not endswith(originalProjectName,'Test')</td>
+                </tr>
+            </table>
+        </div>
+
+        <p class="tip-box margin-top"><strong>&#128161; Tip:</strong> Results can be filtered by any available property, not just those demonstrated.</p>
+
+        <h3>Example: Filter by state</h3>
+        <p class="margin-bottom-large">Use an OData query to filter by State Type equal to "Paused".</p>
+
+        <label for="query-filter-state">Query String</label>
+        <input type="text" id="query-filter-state" value="$filter=stateType eq 'Paused'" />
+
+        <p>Result</p>
+        <pre id="query-filter-state-result" class="code-scroll small">Loading...</pre>
+
+        <h3 class="margin-top-xlarge">Example: Filter between dates</h3>
+        <p class="margin-bottom-large">Use an OData query to find results between two dates.</p>
+
+        <label for="query-filter-date">Query String</label>
+        <input type="text" id="query-filter-date" value="Generating date..." style="width: 100%;" />
+
+        <p>Result</p>
+        <pre id="query-filter-date-result" class="code-scroll small margin-bottom-large-large">Loading...</pre>
+
+        <hr class="large" />
+
+        <!-- $orderby -->
+        <div class="code-heading">
+            <h2 id="orderby" class="query-name">$orderby</h2>
+
+            <button data-code-toggle="orderby" class="code-toggle">
+                <svg class="icon"><use xlink:href="assets/ui/icons.svg#code"></use></svg>
+                <span>Show</span> Sample Code
+            </button>
+            <div data-code-preview="orderby" class="code-preview">
+                <button data-code-type="basic" class="active">Basic</button>
+                <div data-code-type="basic">
+                    <pre class="language-javascript"><code data-src="assets/js/sdk-snippet/odata-orderby.js"></code></pre>
+                </div>
+            </div>
+        </div>
+
+        <p class="tip-box"><strong>&#128161; Tip:</strong> Results can be ordered by any available property, not just those demonstrated.</p>
+
+        <h3>Example: Order by name</h3>
+        <p class="margin-bottom-large">Use an OData query to order the response based on name.</p>
+
+        <label for="query-orderby-name">Query String</label>
+        <input type="text" id="query-orderby-name" value="$orderby=name asc" />
+
+        <p>Result</p>
+        <pre id="query-orderby-name-result" class="code-scroll small">Loading...</pre>
+
+        <h3 style="margin-top: 2.5em;">Example: Order by date</h3>
+        <p class="margin-bottom-large">Use an OData query to order the response based on DateEdited.</p>
+
+        <label for="query-orderby-date">Query String</label>
+        <input type="text" id="query-orderby-date" value="$orderby=dateEdited desc" />
+
+        <p>Result</p>
+        <pre id="query-orderby-date-result" class="code-scroll small">Loading...</pre>
+
+        <hr class="large" />
+
+        <!-- $select -->
+        <div class="code-heading">
+            <h2 id="select" class="query-name">$select</h2>
+
+            <button data-code-toggle="select" class="code-toggle">
+                <svg class="icon"><use xlink:href="assets/ui/icons.svg#code"></use></svg>
+                <span>Show</span> Sample Code
+            </button>
+            <div data-code-preview="select" class="code-preview">
+                <button data-code-type="basic" class="active">Basic</button>
+                <div data-code-type="basic">
+                    <pre class="language-javascript"><code data-src="assets/js/sdk-snippet/odata-select.js"></code></pre>
+                </div>
+            </div>
+        </div>
+
+        <p class="margin-bottom-large">Use an OData query to specify the properties to include in the response.</p>
+
+        <label for="query-select">Query String</label>
+        <input type="text" id="query-select" value="$select=name,stateName" />
+
+        <p>Result</p>
+        <pre id="query-select-result" class="code-scroll">Loading...</pre>
+
+        <hr class="large" />
+
+        <!-- $skip -->
+        <div class="code-heading">
+            <h2 id="skip" class="query-name">$skip</h2>
+
+            <button data-code-toggle="skip" class="code-toggle">
+                <svg class="icon"><use xlink:href="assets/ui/icons.svg#code"></use></svg>
+                <span>Show</span> Sample Code
+            </button>
+            <div data-code-preview="skip" class="code-preview">
+                <button data-code-type="basic" class="active">Basic</button>
+                <div data-code-type="basic">
+                    <pre class="language-javascript"><code data-src="assets/js/sdk-snippet/odata-skip.js"></code></pre>
+                </div>
+            </div>
+        </div>
+
+        <p>Use an OData query to manipulate the starting position - skipping and excluding results.</p>
+        <p class="margin-bottom-large">$skip is useful for pagination, when combined with $top.</p>
+
+        <label for="query-skip">Query String</label>
+        <input type="text" id="query-skip" value="$skip=3" />
+
+        <p>Result</p>
+        <pre id="query-skip-result" class="code-scroll">Loading...</pre>
+
+        <hr class="large" />
+
+        <!-- $top -->
+        <div class="code-heading">
+            <h2 id="top" class="query-name">$top</h2>
+
+            <button data-code-toggle="top" class="code-toggle">
+                <svg class="icon"><use xlink:href="assets/ui/icons.svg#code"></use></svg>
+                <span>Show</span> Sample Code
+            </button>
+            <div data-code-preview="top" class="code-preview">
+                <button data-code-type="basic" class="active">Basic</button>
+                <div data-code-type="basic">
+                    <pre class="language-javascript"><code data-src="assets/js/sdk-snippet/odata-top.js"></code></pre>
+                </div>
+            </div>
+        </div>
+
+        <p class="margin-bottom-large">Use an OData query to manipulate/limit the number of items returned.</p>
+
+        <label for="query-top">Query String</label>
+        <input type="text" id="query-top" value="$top=2" />
+
+        <p>Result</p>
+        <pre id="query-top-result" class="code-scroll">Loading...</pre>
+
+        <hr class="large" />
+
+        <!-- Combined Queries -->
+        <div class="code-heading">
+            <h2 id="combined" class="query-name">Combined Queries</h2>
+
+            <button data-code-toggle="combined" class="code-toggle">
+                <svg class="icon"><use xlink:href="assets/ui/icons.svg#code"></use></svg>
+                <span>Show</span> Sample Code
+            </button>
+            <div data-code-preview="combined" class="code-preview">
+                <button data-code-type="basic" class="active">Basic</button>
+                <div data-code-type="basic">
+                    <pre class="language-javascript"><code data-src="assets/js/sdk-snippet/odata-combined.js"></code></pre>
+                </div>
+            </div>
+        </div>
+
+        <p>Use a combined OData query to return complex results.</p>
+        <p class="margin-bottom-large">This example query returns the name &amp; id for 2 results, skipping the first 3 results.</p>
+
+        <label for="query-combined">Query String</label>
+        <input type="text" id="query-combined" value="$select=name,id&$top=2&$skip=3" />
+
+        <p>Result</p>
+        <pre id="query-combined-result" class="code-scroll">Loading...</pre>
+
+        <hr class="large" />
+
+        <!-- Custom Query -->
+        <h2 id="query-builder">Custom OData Query Builder</h2>
+        <p class="margin-bottom-large">Create a custom OData query and view the dynamic results.</p>
+
+        <div id="custom" class="note-box">
+
+            <label for="custom-query-method">Select SDK Method:</label>
+            <select id="custom-query-method" style="margin-bottom: 1em;">
+                <option selected>getAllSpecifications</option>
+                <option>getProjects</option>
+                <option>getDriveApps</option>
+            </select>
+
+            <label for="custom-query-input">Query String</label>
+            <input type="text" id="custom-query-input" value="" style="margin-bottom: .5em;" />
+
+            <button onclick="runCustomQuery()" class="margin-bottom-large">Run Query</button>
+
+            <h4>Result</h4>
+            <pre id="custom-query-result" class="code-scroll">Enter a custom query.</pre>
+
+        </div>
+
+<!--
+    -----------------------------
+        START EXAMPLE
+    -----------------------------
+-->
+
+        <script src="config.js"></script>
+        <script src="../DriveWorksLiveIntegrationClient.min.js"></script>
+        <script async>
+
+            const SERVER_URL = config.serverUrl;
+            const GROUP_ALIAS = config.groupAlias;
+            const CREDENTIALS = config.credentials;
+            const client = new window.DriveWorksLiveClient(SERVER_URL);
+
+            (async function () {
+                try {
+                    const session = await client.loginGroup(GROUP_ALIAS, CREDENTIALS);
+                    if (!session) {
+                        throw "No response";
+                    }
+
+                    runDefaultQueries();
+                } catch (error) {
+                    console.log(error);
+                    document.querySelectorAll("pre[id$='result']").forEach(result => {
+                        result.innerHTML = "Unavailable. Check browser console for errors.";
+                    });
+                }
+            })();
+
+            // Run requests with default queries on page load
+            function runDefaultQueries() {
+
+                // Generate date range for date filter (the last week)
+                const now = new Date();
+                const lastWeek = new Date();
+                lastWeek.setDate(lastWeek.getDate() - 7);
+                const dateQuery = `$filter=DateCreated gt ${lastWeek.toISOString()} and DateCreated lt ${now.toISOString()}`;
+                document.getElementById("query-filter-date").value = dateQuery;
+
+                runQuery("filter-state", "$filter=stateType eq 'Paused'");
+                runQuery("filter-date", dateQuery);
+                runQuery("orderby-name", "$orderby=name asc");
+                runQuery("orderby-date", "$orderby=dateEdited desc");
+                runQuery("select", "$select=name,stateName");
+                runQuery("skip", "$skip=3");
+                runQuery("top", "$top=2");
+                runQuery("combined", "$select=name,id&$top=2&$skip=3");
+            }
+
+            async function runQuery(name, queryString) {
+                const output = document.querySelector(`#query-${name}-result`);
+                try {
+                    const result = await client.getAllSpecifications(GROUP_ALIAS, queryString);
+                    if (!result) {
+                        throw "No response";
+                    }
+
+                    output.innerHTML = JSON.stringify(result, false, 2);
+                } catch (error) {
+                    output.innerHTML = "Invalid query string. Check browser console for errors.";
+                }
+            }
+
+        </script>
+
+<!--
+    -----------------------------
+        END EXAMPLE
+    -----------------------------
+-->
+
+    </main>
+
+    <footer>&copy; DriveWorks Ltd 2024. All rights reserved.</footer>
+
+    <!-- Help File Scripts -->
+    <script src="assets/js/vendor/highlight.min.js"></script>
+    <script src="assets/js/help-file-functions.js"></script>
+
+    <!-- OData Example Functions -->
+    <script>
+
+        // Update results on query string input change
+        document.querySelectorAll("input[id^='query']").forEach((input) => {
+            input.addEventListener("keyup", (e) => {
+                runQuery(input.id.replace("query-", ""), input.value);
+            });
+        });
+
+        // Custom Query Builder
+        const methodSelect = document.getElementById("custom-query-method");
+        const customQueryInput = document.getElementById("custom-query-input");
+        const customQueryResult = document.getElementById("custom-query-result");
+        customQueryInput.addEventListener("keyup", (e) => {
+            if (e.key === "Enter") { runCustomQuery(); }
+        });
+
+        async function runCustomQuery() {
+            try {
+                const queryString = customQueryInput.value;
+                let result;
+                switch (methodSelect.value) {
+                    case "getAllSpecifications":
+                        result = await client.getAllSpecifications(GROUP_ALIAS, queryString);
+                        break;
+                    case "getProjects":
+                        result = await client.getProjects(GROUP_ALIAS, queryString);
+                        break;
+                    case "getDriveApps":
+                        result = await client.getDriveApps(GROUP_ALIAS, queryString);
+                        break;
+                    default: break;
+                }
+
+                if (!result) {
+                    showCustomQueryError();
+                    return;
+                }
+
+                customQueryResult.innerHTML = JSON.stringify(result, false, 2);
+            } catch (error) {
+                console.log(error);
+                showCustomQueryError();
+            }
+        }
+
+        function showCustomQueryError() {
+            customQueryResult.innerHTML = "Invalid query string. Check browser console for errors.";
+        }
+
+    </script>
+
+</body>
+
+</html>

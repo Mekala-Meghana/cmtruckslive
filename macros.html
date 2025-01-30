@@ -1,0 +1,339 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="smooth-scroll">
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Macros - Client SDK Examples | Integration Theme</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/sdk-example/macros.css">
+    <link rel="stylesheet" href="assets/css/vendor/highlight.vs2015.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap">
+
+</head>
+
+<body class="example-macros">
+
+    <header>
+
+        <nav class="main-nav">
+
+            <a href="index.html" title="Home | Integration Theme" class="logo">
+                <img src="assets/ui/logo.svg" alt="DriveWorks" />
+            </a>
+
+            <label for="menu-state" class="menu-toggle" title="Menu">
+                <svg class="icon"><use xlink:href="assets/ui/icons.svg#menu"></use></svg>
+            </label>
+            <input type="checkbox" id="menu-state" class="menu-state" />
+
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="home.html" class="current">Client SDK Examples</a></li>
+                <li><a href="example-sites">Example Sites</a></li>
+                <li><a href="help/client">Client SDK Docs</a></li>
+                <li><a href="help/server">Server API Docs</a></li>
+                <li>
+                    <a href="https://docs.driveworkspro.com/Topic/IntegrationThemeLive" target="_blank">
+                        <svg class="icon"><use xlink:href="assets/ui/icons.svg#external"></use></svg>
+                        DriveWorks Help
+                    </a>
+                </li>
+            </ul>
+
+        </nav>
+
+        <nav class="sub-nav">
+
+            <label for="sub-nav-state" class="sub-nav-toggle" title="Menu">
+                <span>Choose an SDK Example</span>
+                <svg class="icon"><use xlink:href="assets/ui/icons.svg#arrow-down"></use></svg>
+            </label>
+            <input type="checkbox" id="sub-nav-state" />
+
+            <ul>
+                <li><a href="home.html">Intro</a></li>
+                <li><a href="login.html">Login &amp; Logout</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="specifications.html">Specifications</a></li>
+                <li><a href="forms.html">Specification Forms</a></li>
+                <li><a href="actions.html">Operations &amp; Transitions</a></li>
+                <li><a href="variablesconstants.html">Variables &amp; Constants</a></li>
+                <li><a href="macros.html" class="current">Macros</a></li>
+                <li><a href="documents.html">Documents</a></li>
+                <li><a href="reports.html">Reports</a></li>
+                <li><a href="group-tables.html">Group Tables</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="odata.html">OData</a></li>
+            </ul>
+
+        </nav>
+
+    </header>
+
+    <div class="intro">
+        <div class="row">
+            <h1>Macros</h1>
+            <p class="margin-bottom-large">This page provides example code for working with Macros in the Integration Theme.</p>
+
+            <div class="note-box">
+                <p class="margin-bottom">For Macros to be accessed via the API, they <strong><u>must</u></strong> be listed in the <code class="dark">&lt;permissions&gt;</code> block of <code class="dark">DriveWorksConfigUser.xml</code> and available to the current user's team.</p>
+                <button data-code-toggle="permissions" class="code-toggle">
+                    <svg class="icon"><use xlink:href="assets/ui/icons.svg#code"></use></svg>
+                    <span>Show</span> Example Permissions
+                </button>
+                <div data-code-preview="permissions" class="code-preview inline">
+                    <pre class="language-xml"><code data-src="assets/data/sdk-example/macros.xml"></code></pre>
+                </div>
+                <p>For full configuration guidance, see <a href="https://docs.driveworkspro.com/Topic/IntegrationThemeSettings#Permissions" target="_blank">Integration Theme Settings</a> in DriveWorks Pro Help.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <main class="row">
+
+        <div id="config-message" class="margin-bottom-xlarge">
+            The shared <a href="config.js" target="_blank" title="View config file"><code>config.js</code></a> file for these examples is incomplete. Enter your own settings for the examples to function.
+        </div>
+
+<!--
+    -----------------------------
+        START EXAMPLE
+    -----------------------------
+-->
+
+    <!-- Specification Macro -->
+    <div class="code-heading">
+        <h2 id="specification-macro">Run Specification Macro</h2>
+
+        <button data-code-toggle="specification-macro" class="code-toggle">
+            <svg class="icon"><use xlink:href="assets/ui/icons.svg#code"></use></svg>
+            <span>Show</span> Sample Code
+        </button>
+
+        <a class="doc-link" href="help/client/classes/DriveWorksLiveClient.html#runMacro" target="_blank">
+            View in SDK Docs
+            <svg class="icon"><use xlink:href="assets/ui/icons.svg#external"></use></svg>
+        </a>
+
+        <div data-code-preview="specification-macro" class="code-preview">
+            <button data-code-type="basic" class="active">Basic</button>
+            <button data-code-type="advanced">Advanced</button>
+            <div data-code-type="basic">
+                <pre class="language-javascript"><code data-src="assets/js/sdk-snippet/specification-macro.js"></code></pre>
+            </div>
+            <div data-code-type="advanced" class="hidden">
+                <pre class="language-javascript"><code data-src="assets/js/sdk-example/specification-macro.js"></code></pre>
+                <pre class="language-html"><code data-src="assets/html/sdk-example/specification-macro.html"></code></pre>
+            </div>
+        </div>
+    </div>
+
+    <p class="margin-bottom-large">Run the supplied Specification Macro on the <a href="#form-output" class="dashed-link" title="Jump to Form">Form rendered below</a>.</p>
+
+    <div id="macro-example">
+
+        <label for="macro-name">Macro Name</label>
+        <input type="text" id="macro-name" />
+
+        <button data-reveal-hidden-content class="link-button">Show optional properties</button>
+        <div class="hidden">
+
+            <label for="macro-argument">Macro Argument <small>(optional)</small></label>
+            <input type="text" id="macro-argument" />
+
+            <label for="macro-caller">Caller <small>(optional)</small></label>
+            <input type="text" id="macro-caller" />
+
+            <div class="flex">
+                <label for="click-position-x">
+                    Click Position X <small>(optional)</small>
+                    <input type="number" id="click-position-x" />
+                </label>
+                <label for="click-position-y">
+                    Click Position Y <small>(optional)</small>
+                    <input type="number" id="click-position-y" />
+                </label>
+            </div>
+
+        </div>
+
+        <button id="macro-button">Run Specification Macro</button>
+
+        <div id="macro-status" class="status-message"></div>
+
+    </div>
+
+    <hr />
+
+    <!-- Control Macro -->
+    <div class="code-heading">
+        <h2 id="control-macro">Run Control Macro</h2>
+
+        <button data-code-toggle="control-macro" class="code-toggle">
+            <svg class="icon"><use xlink:href="assets/ui/icons.svg#code"></use></svg>
+            <span>Show</span> Sample Code
+        </button>
+
+        <a class="doc-link" href="help/client/classes/DriveWorksLiveClient.html#runControlMacro" target="_blank">
+            View in SDK Docs
+            <svg class="icon"><use xlink:href="assets/ui/icons.svg#external"></use></svg>
+        </a>
+
+        <div data-code-preview="control-macro" class="code-preview">
+            <button data-code-type="basic" class="active">Basic</button>
+            <button data-code-type="advanced">Advanced</button>
+            <div data-code-type="basic">
+                <pre class="language-javascript"><code data-src="assets/js/sdk-snippet/control-macro.js"></code></pre>
+            </div>
+            <div data-code-type="advanced" class="hidden">
+                <pre class="language-javascript"><code data-src="assets/js/sdk-example/control-macro.js"></code></pre>
+                <pre class="language-html"><code data-src="assets/html/sdk-example/control-macro.html"></code></pre>
+            </div>
+        </div>
+    </div>
+
+    <p class="margin-bottom-large">Run the supplied Control Macro on the <a href="#form-output" class="dashed-link" title="Jump to Form">Form rendered below</a>.</p>
+
+    <div id="control-macro-example">
+
+        <label for="control-name">Control Name</label>
+        <input type="text" id="control-name" />
+
+        <label for="control-macro-name">Macro Name</label>
+        <input type="text" id="control-macro-name" />
+
+        <button data-reveal-hidden-content class="link-button">Show optional properties</button>
+        <div class="hidden">
+            <div class="flex">
+                <label for="control-click-position-x">
+                    Click Position X <small>(optional)</small>
+                    <input type="number" id="control-click-position-x" />
+                </label>
+                <label for="control-click-position-y">
+                    Click Position Y <small>(optional)</small>
+                    <input type="number" id="control-click-position-y" />
+                </label>
+            </div>
+        </div>
+
+        <button id="control-macro-button">Run Control Macro</button>
+
+        <div id="control-macro-status" class="status-message"></div>
+
+    </div>
+
+    <hr />
+
+    <!-- Touch Point Macro -->
+    <div class="code-heading">
+        <h2 id="touch-point-macro">Run Touch Point Macro</h2>
+
+        <button data-code-toggle="touch-point-macro" class="code-toggle">
+            <svg class="icon"><use xlink:href="assets/ui/icons.svg#code"></use></svg>
+            <span>Show</span> Sample Code
+        </button>
+
+        <a class="doc-link" href="help/client/classes/DriveWorksLiveClient.html#runTouchPointMacro" target="_blank">
+            View in SDK Docs
+            <svg class="icon"><use xlink:href="assets/ui/icons.svg#external"></use></svg>
+        </a>
+
+        <div data-code-preview="touch-point-macro" class="code-preview">
+            <button data-code-type="basic" class="active">Basic</button>
+            <button data-code-type="advanced">Advanced</button>
+            <div data-code-type="basic">
+                <pre class="language-javascript"><code data-src="assets/js/sdk-snippet/touch-point-macro.js"></code></pre>
+            </div>
+            <div data-code-type="advanced" class="hidden">
+                <pre class="language-javascript"><code data-src="assets/js/sdk-example/touch-point-macro.js"></code></pre>
+                <pre class="language-html"><code data-src="assets/html/sdk-example/touch-point-macro.html"></code></pre>
+            </div>
+        </div>
+    </div>
+
+    <p class="margin-bottom-large">Run the supplied Touch Point Macro on the <a href="#form-output" class="dashed-link" title="Jump to Form">Form rendered below</a>.</p>
+
+    <div id="touch-point-macro-example">
+
+        <label for="preview-control-name">Preview Control Name</label>
+        <input type="text" id="preview-control-name" />
+
+        <label for="model-address">Model Address</label>
+        <input type="text" id="model-address" placeholder="e.g. Root\NodeName..." />
+
+        <button data-reveal-hidden-content class="link-button">Show optional properties</button>
+        <div class="hidden">
+            <div class="flex">
+                <label for="hit-position-x">
+                    Hit Position X <small>(optional)</small>
+                    <input type="number" id="hit-position-x" />
+                </label>
+                <label for="hit-position-y">
+                    Hit Position Y <small>(optional)</small>
+                    <input type="number" id="hit-position-y" />
+                </label>
+                <label for="hit-position-z">
+                    Hit Position Z <small>(optional)</small>
+                    <input type="number" id="hit-position-z" />
+                </label>
+            </div>
+            <div class="flex">
+                <label for="hit-normal-x">
+                    Hit Normal X <small>(optional)</small>
+                    <input type="number" id="hit-normal-x" />
+                </label>
+                <label for="hit-normal-y">
+                    Hit Normal Y <small>(optional)</small>
+                    <input type="number" id="hit-normal-y" />
+                </label>
+                <label for="hit-normal-z">
+                    Hit Normal Z <small>(optional)</small>
+                    <input type="number" id="hit-normal-z" />
+                </label>
+            </div>
+        </div>
+
+        <button id="touch-point-macro-button">Run Touch Point Macro</button>
+
+        <div id="touch-point-macro-status" class="status-message"></div>
+
+    </div>
+
+    <hr />
+
+    <!-- Demo Specification -->
+    <h2 id="demo-specification">Demo Specification</h2>
+    <p class="margin-bottom-large">Any Macros triggered above will be run on this Specification to display changes.</p>
+
+    <div id="form-output">
+        <p>Loading...</p>
+    </div>
+
+    <script src="../DriveWorksLiveIntegrationClient.min.js"></script>
+    <script src="config.js"></script>
+    <script src="assets/js/sdk-example/macros.js"></script>
+
+<!--
+    -----------------------------
+        END EXAMPLE
+    -----------------------------
+-->
+
+    </main>
+
+    <footer>&copy; DriveWorks Ltd 2024. All Rights Reserved</footer>
+
+    <!-- Help File Scripts -->
+    <script src="assets/js/vendor/highlight.min.js"></script>
+    <script src="assets/js/help-file-functions.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,295 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Variables &amp; Constants - Client SDK Examples | Integration Theme</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/sdk-example/variables-constants.css">
+    <link rel="stylesheet" href="assets/css/vendor/highlight.vs2015.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap">
+
+</head>
+
+<body class="example-variables-constants">
+
+    <header>
+
+        <nav class="main-nav">
+
+            <a href="index.html" title="Home | Integration Theme" class="logo">
+                <img src="assets/ui/logo.svg" alt="DriveWorks" />
+            </a>
+
+            <label for="menu-state" class="menu-toggle" title="Menu">
+                <svg class="icon"><use xlink:href="assets/ui/icons.svg#menu"></use></svg>
+            </label>
+            <input type="checkbox" id="menu-state" class="menu-state" />
+
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="home.html" class="current">Client SDK Examples</a></li>
+                <li><a href="example-sites">Example Sites</a></li>
+                <li><a href="help/client">Client SDK Docs</a></li>
+                <li><a href="help/server">Server API Docs</a></li>
+                <li>
+                    <a href="https://docs.driveworkspro.com/Topic/IntegrationThemeLive" target="_blank">
+                        <svg class="icon"><use xlink:href="assets/ui/icons.svg#external"></use></svg>
+                        DriveWorks Help
+                    </a>
+                </li>
+            </ul>
+
+        </nav>
+
+        <nav class="sub-nav">
+
+            <label for="sub-nav-state" class="sub-nav-toggle" title="Menu">
+                <span>Choose an SDK Example</span>
+                <svg class="icon"><use xlink:href="assets/ui/icons.svg#arrow-down"></use></svg>
+            </label>
+            <input type="checkbox" id="sub-nav-state" />
+
+            <ul>
+                <li><a href="home.html">Intro</a></li>
+                <li><a href="login.html">Login &amp; Logout</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="specifications.html">Specifications</a></li>
+                <li><a href="forms.html">Specification Forms</a></li>
+                <li><a href="actions.html">Operations &amp; Transitions</a></li>
+                <li><a href="variablesconstants.html" class="current">Variables &amp; Constants</a></li>
+                <li><a href="macros.html">Macros</a></li>
+                <li><a href="documents.html">Documents</a></li>
+                <li><a href="reports.html">Reports</a></li>
+                <li><a href="group-tables.html">Group Tables</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="odata.html">OData</a></li>
+            </ul>
+
+        </nav>
+
+    </header>
+
+    <div class="intro">
+        <div class="row">
+            <h1>Variables &amp; Constants</h1>
+            <p class="margin-bottom-large">This page provides example code for working with Variables &amp; Constants in the Integration Theme.</p>
+
+            <div class="note-box">
+                <p class="margin-bottom">For Variables &amp; Constants to be accessed via the API, they <strong><u>must</u></strong> be listed in the <code class="dark">&lt;permissions&gt;</code> block of <code class="dark">DriveWorksConfigUser.xml</code> and available to the current user's team.</p>
+                <button data-code-toggle="permissions" class="code-toggle">
+                    <svg class="icon"><use xlink:href="assets/ui/icons.svg#code"></use></svg>
+                    <span>Show</span> Example Permissions
+                </button>
+                <div data-code-preview="permissions" class="code-preview inline">
+                    <pre class="language-xml"><code data-src="assets/data/sdk-example/permissions.xml"></code></pre>
+                </div>
+                <p>For full configuration guidance, see <a href="https://docs.driveworkspro.com/Topic/IntegrationThemeSettings#Permissions" target="_blank">Integration Theme Settings</a> in DriveWorks Pro Help.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <main class="row">
+
+        <div id="config-message" class="margin-bottom-xlarge">
+            The shared <a href="config.js" target="_blank" title="View config file"><code>config.js</code></a> file for these examples is incomplete. Enter your own settings for the examples to function.
+        </div>
+
+<!--
+    -----------------------------
+        START EXAMPLE
+    -----------------------------
+-->
+
+    <!-- Code Preview ONLY -->
+    <div class="code-heading">
+
+        <h2 id="get-variables">Get Specification Variables</h2>
+
+        <button data-code-toggle="variables" class="code-toggle">
+            <svg class="icon"><use xlink:href="assets/ui/icons.svg#code"></use></svg>
+            <span>Show</span> Sample Code
+        </button>
+
+        <a class="doc-link" href="help/client/classes/DriveWorksLiveClient.html#getSpecificationVariables" target="_blank">
+            View in SDK Docs
+            <svg class="icon"><use xlink:href="assets/ui/icons.svg#external"></use></svg>
+        </a>
+
+        <div data-code-preview="variables" class="code-preview">
+            <button data-code-type="basic" class="active">Basic</button>
+            <button data-code-type="advanced">Advanced</button>
+            <div data-code-type="basic">
+                <pre class="language-javascript"><code data-src="assets/js/sdk-snippet/variables.js"></code></pre>
+            </div>
+            <div data-code-type="advanced" class="hidden">
+                <pre class="language-javascript"><code data-src="assets/js/sdk-example/variables.js"></code></pre>
+                <pre class="language-html"><code data-src="assets/html/sdk-example/variables.html"></code></pre>
+            </div>
+        </div>
+
+    </div>
+
+    <p>This example displays all of the Variables for a Specification with their values in a table.</p>
+    <p class="margin-bottom-large">If no Variables are shown, ensure they are listed in <a href="https://docs.driveworkspro.com/Topic/IntegrationThemeSettings#Permissions" target="_blank">DriveWorksConfigUser.xml</a>.</p>
+    <!-- END Preview -->
+
+    <h4 id="variables-header">
+        Variables
+    </h4>
+    <div class="scroll-container">
+        <table id="variables-table" class="fancy-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody id="variables-body">
+                <tr><td colspan="2">Loading...</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <hr />
+
+    <!-- Code Preview ONLY -->
+    <div class="code-heading">
+        <h2 id="get-constants">Get Specification Constants</h2>
+
+        <button data-code-toggle="constants" class="code-toggle">
+            <svg class="icon"><use xlink:href="assets/ui/icons.svg#code"></use></svg>
+            <span>Show</span> Sample Code
+        </button>
+
+        <a class="doc-link" href="help/client/classes/DriveWorksLiveClient.html#getSpecificationConstants" target="_blank">
+            View in SDK Docs
+            <svg class="icon"><use xlink:href="assets/ui/icons.svg#external"></use></svg>
+        </a>
+
+        <div data-code-preview="constants" class="code-preview">
+            <button data-code-type="basic" class="active">Basic</button>
+            <button data-code-type="advanced">Advanced</button>
+            <div data-code-type="basic">
+                <pre class="language-javascript"><code data-src="assets/js/sdk-snippet/constants.js"></code></pre>
+            </div>
+            <div data-code-type="advanced" class="hidden">
+                <pre class="language-javascript"><code data-src="assets/js/sdk-example/constants.js"></code></pre>
+                <pre class="language-html"><code data-src="assets/html/sdk-example/constants.html"></code></pre>
+            </div>
+        </div>
+    </div>
+
+    <p>This example displays all of the Constants for a Specification with their values in a table.</p>
+    <p class="margin-bottom-large">If no Constants are shown, ensure they are listed in <a href="https://docs.driveworkspro.com/Topic/IntegrationThemeSettings#Permissions" target="_blank">DriveWorksConfigUser.xml</a>.</p>
+    <!-- END Preview -->
+
+    <h4 id="constants-header">
+        Constants
+    </h4>
+    <div class="scroll-container">
+        <table id="constants-table" class="fancy-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody id="constants-body">
+                <tr><td colspan="2">Loading...</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <hr />
+
+    <!-- Code Preview ONLY -->
+    <div class="code-heading">
+        <h2 id="update-constants">Update a Constant</h2>
+
+        <button data-code-toggle="update-constant" class="code-toggle">
+            <svg class="icon"><use xlink:href="assets/ui/icons.svg#code"></use></svg>
+            <span>Show</span> Sample Code
+        </button>
+
+        <a class="doc-link" href="help/client/classes/DriveWorksLiveClient.html#updateConstantValue" target="_blank">
+            View in SDK Docs
+            <svg class="icon"><use xlink:href="assets/ui/icons.svg#external"></use></svg>
+        </a>
+
+        <div data-code-preview="update-constant" class="code-preview">
+            <button data-code-type="basic" class="active">Basic</button>
+            <button data-code-type="advanced">Advanced</button>
+            <div data-code-type="basic">
+                <pre class="language-javascript"><code data-src="assets/js/sdk-snippet/constants-update.js"></code></pre>
+            </div>
+            <div data-code-type="advanced" class="hidden">
+                <pre class="language-javascript"><code data-src="assets/js/sdk-example/constants-update.js"></code></pre>
+                <pre class="language-html"><code data-src="assets/html/sdk-example/constants-update.html"></code></pre>
+            </div>
+        </div>
+    </div>
+
+    <p>This example shows how Constant values can be updated via the API (if Constants are available and listed above).</p>
+    <p class="margin-bottom-large">If a Constant's value is accessible, but editing is not permitted (see below), a 403 'Forbidden' error will be thrown in the console when attempting to update the value.</p>
+    <!-- END Preview -->
+
+    <div id="update-constant" class="margin-bottom-xlarge">
+        <h4>Loading...</h4>
+    </div>
+
+    <div id="xml-permissions" class="note-box">
+        <h4>Important Note</h4>
+        <p>To allow a Constant to be updated using the Integration Theme, it must be granted edit permissions.</p>
+        <p>By default, all Constants are read-only unless specifically marked with canEdit="true".</p>
+        <p class="margin-bottom-large">This is configurable per team in the <code>&lt;permissions&gt;</code> block of <code>DriveWorksConfigUser.xml</code></p>
+
+        <p><strong>Example Usage:</strong></p>
+        <p class="margin-bottom-large"><code>&lt;team name="YourTeamName" <b>canEdit="true"</b> /&gt;</code></p>
+        <div data-code-preview class="code-preview inline open">
+            <pre class="language-xml"><code data-src="assets/data/sdk-example/can-edit.xml"></code></pre>
+        </div>
+
+        <p>See <a href="https://docs.driveworkspro.com/Topic/IntegrationThemeSettings#Permissions" target="_blank">Integration Theme Settings</a> in DriveWorks Pro Help for more details.</p>
+    </div>
+
+    <hr class="large" />
+
+    <h2 id="react-to-changes">Reacting to Constant/Variable changes</h2>
+
+    <p><strong>Once a Specification is rendered</strong>, you can listen for custom events fired when the value of a Constant or Variable changes, and access the new value that is automatically returned.</p>
+    <p>This is achieved by registering custom functions using:
+    <ul>
+        <li><code class="bold"><a href="help/client/classes/Specification.html#registerConstantValueChangedDelegate" target="_blank">registerConstantValueChangedDelegate</a></code></li>
+        <li><code class="bold"><a href="help/client/classes/Specification.html#registerVariableValueChangedDelegate" target="_blank">registerVariableValueChangedDelegate</a></code></li>
+    </ul>
+    <p>For more information and sample code, see the <a href="events.html#specification-events">Events</a> example.</p>
+
+    <script src="../DriveWorksLiveIntegrationClient.min.js"></script>
+    <script src="config.js"></script>
+    <script src="assets/js/sdk-example/variables-constants.js"></script>
+
+<!--
+    -----------------------------
+        END EXAMPLE
+    -----------------------------
+-->
+
+    </main>
+
+    <footer>&copy; DriveWorks Ltd 2024. All rights reserved.</footer>
+
+    <!-- Help File Scripts -->
+    <script src="assets/js/vendor/highlight.min.js"></script>
+    <script src="assets/js/help-file-functions.js"></script>
+
+</body>
+
+</html>

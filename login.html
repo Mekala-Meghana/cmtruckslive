@@ -1,0 +1,319 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Login - Client SDK Examples | Integration Theme</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/sdk-example/login.css">
+    <link rel="stylesheet" href="assets/css/vendor/highlight.vs2015.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap">
+
+</head>
+
+<body class="example-login">
+
+    <header>
+
+        <nav class="main-nav">
+
+            <a href="index.html" title="Home | Integration Theme" class="logo">
+                <img src="assets/ui/logo.svg" alt="DriveWorks" />
+            </a>
+
+            <label for="menu-state" class="menu-toggle" title="Menu">
+                <svg class="icon"><use xlink:href="assets/ui/icons.svg#menu"></use></svg>
+            </label>
+            <input type="checkbox" id="menu-state" class="menu-state" />
+
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="home.html" class="current">Client SDK Examples</a></li>
+                <li><a href="example-sites">Example Sites</a></li>
+                <li><a href="help/client">Client SDK Docs</a></li>
+                <li><a href="help/server">Server API Docs</a></li>
+                <li>
+                    <a href="https://docs.driveworkspro.com/Topic/IntegrationThemeLive" target="_blank">
+                        <svg class="icon"><use xlink:href="assets/ui/icons.svg#external"></use></svg>
+                        DriveWorks Help
+                    </a>
+                </li>
+            </ul>
+
+        </nav>
+
+        <nav class="sub-nav">
+
+            <label for="sub-nav-state" class="sub-nav-toggle" title="Menu">
+                <span>Choose an SDK Example</span>
+                <svg class="icon"><use xlink:href="assets/ui/icons.svg#arrow-down"></use></svg>
+            </label>
+            <input type="checkbox" id="sub-nav-state" />
+
+            <ul>
+                <li><a href="home.html">Intro</a></li>
+                <li><a href="login.html" class="current">Login &amp; Logout</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="specifications.html">Specifications</a></li>
+                <li><a href="forms.html">Specification Forms</a></li>
+                <li><a href="actions.html">Operations &amp; Transitions</a></li>
+                <li><a href="variablesconstants.html">Variables &amp; Constants</a></li>
+                <li><a href="macros.html">Macros</a></li>
+                <li><a href="documents.html">Documents</a></li>
+                <li><a href="reports.html">Reports</a></li>
+                <li><a href="group-tables.html">Group Tables</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="odata.html">OData</a></li>
+            </ul>
+
+        </nav>
+
+    </header>
+
+    <div class="intro">
+        <div class="row">
+            <h1>Login & Logout</h1>
+            <p>This page provides example code for handling logins in the Integration Theme.</p>
+            <p class="margin-bottom-large">It covers logging in/out of a Group as a specific user, and modifying existing login credentials.</p>
+            <p><strong>Important Note: These examples do not aim to cover securely storing & handling sensitive credentials.</strong></p>
+        </div>
+    </div>
+
+    <main class="row">
+
+        <div id="config-message" class="margin-bottom-xlarge">
+            The shared <a href="config.js" target="_blank" title="View config file"><code>config.js</code></a> file for these examples is incomplete. Enter your own settings for the examples to function.
+        </div>
+
+<!--
+    -----------------------------
+        START EXAMPLE
+    -----------------------------
+-->
+
+    <!-- Code Preview ONLY -->
+    <div class="code-heading">
+
+        <h2 id="login">Login to Group with Credentials</h2>
+
+        <button data-code-toggle="login" class="code-toggle">
+            <svg class="icon"><use xlink:href="assets/ui/icons.svg#code"></use></svg>
+            <span>Show</span> Sample Code
+        </button>
+
+        <a class="doc-link" href="help/client/classes/DriveWorksLiveClient.html#loginGroup" target="_blank">
+            View in SDK Docs
+            <svg class="icon"><use xlink:href="assets/ui/icons.svg#external"></use></svg>
+        </a>
+
+        <div data-code-preview="login" class="code-preview">
+            <button data-code-type="basic" class="active">Basic</button>
+            <button data-code-type="advanced">Advanced</button>
+            <div data-code-type="basic">
+                <pre class="language-javascript"><code data-src="assets/js/sdk-snippet/login.js"></code></pre>
+            </div>
+            <div data-code-type="advanced" class="hidden">
+                <pre class="language-javascript"><code data-src="assets/js/sdk-example/login.js"></code></pre>
+                <pre class="language-html"><code data-src="assets/html/sdk-example/login.html"></code></pre>
+                <pre class="language-css"><code data-src="assets/css/sdk-example/login.css"></code></pre>
+            </div>
+        </div>
+
+    </div>
+    <!-- END Preview -->
+
+    <div>
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" />
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" />
+    </div>
+    <button onclick="login()" class="button green">Login</button>
+
+    <div id="login-feedback"></div>
+
+    <hr />
+
+    <!-- Code Preview ONLY -->
+    <div class="code-heading">
+
+        <h2 id="login-sso">Login to Group with Single Sign-On (SSO)</h2>
+
+        <button data-code-toggle="loginSSO" class="code-toggle">
+            <svg class="icon"><use xlink:href="assets/ui/icons.svg#code"></use></svg>
+            <span>Show</span> Sample Code
+        </button>
+
+        <a class="doc-link" href="help/client/classes/DriveWorksLiveClient.html#loginSSO" target="_blank">
+            View in SDK Docs
+            <svg class="icon"><use xlink:href="assets/ui/icons.svg#external"></use></svg>
+        </a>
+
+        <div data-code-preview="loginSSO" class="code-preview">
+            <button data-code-type="basic" class="active">Basic</button>
+            <button data-code-type="advanced">Advanced</button>
+            <div data-code-type="basic">
+                <pre class="language-javascript"><code data-src="assets/js/sdk-snippet/login-sso.js"></code></pre>
+            </div>
+            <div data-code-type="advanced" class="hidden">
+                <pre class="language-javascript"><code data-src="assets/js/sdk-example/login-sso.js"></code></pre>
+                <pre class="language-html"><code data-src="assets/html/sdk-example/login-sso.html"></code></pre>
+                <pre class="language-css"><code data-src="assets/css/sdk-example/login.css"></code></pre>
+            </div>
+        </div>
+
+    </div>
+    <!-- END Preview -->
+
+    <button onclick="loginSSO()" class="button green">Login with SSO</button>
+
+    <div id="login-sso-feedback"></div>
+
+    <hr />
+
+    <!-- Code Preview ONLY -->
+    <div class="code-heading">
+        <h2 id="logout">Logout Group</h2>
+
+        <button data-code-toggle="logout" class="code-toggle">
+            <svg class="icon"><use xlink:href="assets/ui/icons.svg#code"></use></svg>
+            <span>Show</span> Sample Code
+        </button>
+
+        <a class="doc-link" href="help/client/classes/DriveWorksLiveClient.html#logoutGroup" target="_blank">
+            View in SDK Docs
+            <svg class="icon"><use xlink:href="assets/ui/icons.svg#external"></use></svg>
+        </a>
+
+        <div data-code-preview="logout" class="code-preview">
+            <button data-code-type="basic" class="active">Basic</button>
+            <button data-code-type="advanced">Advanced</button>
+            <div data-code-type="basic">
+                <pre class="language-javascript"><code data-src="assets/js/sdk-snippet/logout.js"></code></pre>
+            </div>
+            <div data-code-type="advanced" class="hidden">
+                <pre class="language-javascript"><code data-src="assets/js/sdk-example/logout.js"></code></pre>
+                <pre class="language-html"><code data-src="assets/html/sdk-example/logout.html"></code></pre>
+                <pre class="language-css"><code data-src="assets/css/sdk-example/login.css"></code></pre>
+            </div>
+        </div>
+    </div>
+    <p>This example uses the login session from above.</p>
+    <!-- END Preview -->
+
+    <button onclick="logout()" class="button red">Logout</button>
+
+    <p id="logout-feedback" class="feedback"></p>
+
+    <hr />
+
+    <!-- Code Preview ONLY -->
+    <div class="code-heading">
+        <h2 id="logout-all-groups">Logout All Groups</h2>
+
+        <button data-code-toggle="logoutAllGroups" class="code-toggle">
+            <svg class="icon"><use xlink:href="assets/ui/icons.svg#code"></use></svg>
+            <span>Show</span> Sample Code
+        </button>
+
+        <a class="doc-link" href="help/client/classes/DriveWorksLiveClient.html#logoutAllGroups" target="_blank">
+            View in SDK Docs
+            <svg class="icon"><use xlink:href="assets/ui/icons.svg#external"></use></svg>
+        </a>
+
+        <div data-code-preview="logoutAllGroups" class="code-preview">
+            <button data-code-type="basic" class="active">Basic</button>
+            <button data-code-type="advanced">Advanced</button>
+            <div data-code-type="basic">
+                <pre class="language-javascript"><code data-src="assets/js/sdk-snippet/logout-all-groups.js"></code></pre>
+            </div>
+            <div data-code-type="advanced" class="hidden">
+                <pre class="language-javascript"><code data-src="assets/js/sdk-example/logout-all-groups.js"></code></pre>
+                <pre class="language-html"><code data-src="assets/html/sdk-example/logout-all-groups.html"></code></pre>
+                <pre class="language-css"><code data-src="assets/css/sdk-example/login.css"></code></pre>
+            </div>
+        </div>
+    </div>
+    <p>This example will logout from all Groups in the current session.</p>
+    <!-- END Preview -->
+
+    <button onclick="logoutAllGroups()" class="button red">Logout all Groups</button>
+
+    <p id="logout-all-groups-feedback" class="feedback"></p>
+
+    <hr />
+
+    <!-- Code Preview ONLY -->
+    <div class="code-heading">
+        <h2 id="change-user">Change User</h2>
+
+        <button data-code-toggle="change-user" class="code-toggle">
+            <svg class="icon"><use xlink:href="assets/ui/icons.svg#code"></use></svg>
+            <span>Show</span> Sample Code
+        </button>
+
+        <a class="doc-link" href="help/client/classes/DriveWorksLiveClient.html#updateGroupLogin" target="_blank">
+            View in SDK Docs
+            <svg class="icon"><use xlink:href="assets/ui/icons.svg#external"></use></svg>
+        </a>
+
+        <div data-code-preview="change-user" class="code-preview">
+            <button data-code-type="basic" class="active">Basic</button>
+            <button data-code-type="advanced">Advanced</button>
+            <div data-code-type="basic">
+                <pre class="language-javascript"><code data-src="assets/js/sdk-snippet/change-user.js"></code></pre>
+            </div>
+            <div data-code-type="advanced" class="hidden">
+                <pre class="language-javascript"><code data-src="assets/js/sdk-example/change-user.js"></code></pre>
+                <pre class="language-html"><code data-src="assets/html/sdk-example/change-user.html"></code></pre>
+                <pre class="language-css"><code data-src="assets/css/sdk-example/login.css"></code></pre>
+            </div>
+        </div>
+    </div>
+    <p class="margin-bottom-large">This example uses the login session from above.</p>
+    <!-- END Preview -->
+
+    <label for="new-username">New Username</label>
+    <input type="text" id="new-username" name="new-username" />
+
+    <label for="new-password">New Password</label>
+    <input type="password" id="new-password" name="new-password" />
+
+    <button onclick="updateCredentials()" class="button">
+        Update Credentials
+    </button>
+
+    <p id="update-feedback" class="feedback"></p>
+
+    <script src="http://www.cmtruckslive.com/DriveWorksLiveIntegrationClient.min.js"></script>
+    <script src="config.js"></script>
+    <script src="assets/js/sdk-example/login-methods.js"></script>
+    <script src="assets/js/sdk-example/logout.js"></script>
+    <script src="assets/js/sdk-example/logout-all-groups.js"></script>
+    <script src="assets/js/sdk-example/change-user.js"></script>
+
+<!--
+    -----------------------------
+        END EXAMPLE
+    -----------------------------
+-->
+
+    </main>
+
+    <footer>&copy; DriveWorks Ltd 2024. All rights reserved.</footer>
+
+    <!-- Help File Scripts -->
+    <script src="assets/js/vendor/highlight.min.js"></script>
+    <script src="assets/js/help-file-functions.js"></script>
+
+</body>
+
+</html>

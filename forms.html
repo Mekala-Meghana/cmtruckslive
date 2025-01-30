@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Forms - Client SDK Examples | Integration Theme</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/vendor/highlight.vs2015.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap">
+
+</head>
+
+<body class="example-forms">
+
+    <header>
+
+        <nav class="main-nav">
+
+            <a href="index.html" title="Home | Integration Theme" class="logo">
+                <img src="assets/ui/logo.svg" alt="DriveWorks" />
+            </a>
+
+            <label for="menu-state" class="menu-toggle" title="Menu">
+                <svg class="icon"><use xlink:href="assets/ui/icons.svg#menu"></use></svg>
+            </label>
+            <input type="checkbox" id="menu-state" class="menu-state" />
+
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="home.html" class="current">Client SDK Examples</a></li>
+                <li><a href="example-sites">Example Sites</a></li>
+                <li><a href="help/client">Client SDK Docs</a></li>
+                <li><a href="help/server">Server API Docs</a></li>
+                <li>
+                    <a href="https://docs.driveworkspro.com/Topic/IntegrationThemeLive" target="_blank">
+                        <svg class="icon"><use xlink:href="assets/ui/icons.svg#external"></use></svg>
+                        DriveWorks Help
+                    </a>
+                </li>
+            </ul>
+
+        </nav>
+
+        <nav class="sub-nav">
+
+            <label for="sub-nav-state" class="sub-nav-toggle" title="Menu">
+                <span>Choose an SDK Example</span>
+                <svg class="icon"><use xlink:href="assets/ui/icons.svg#arrow-down"></use></svg>
+            </label>
+            <input type="checkbox" id="sub-nav-state" />
+
+            <ul>
+                <li><a href="home.html">Intro</a></li>
+                <li><a href="login.html">Login &amp; Logout</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="specifications.html">Specifications</a></li>
+                <li><a href="forms.html" class="current">Specification Forms</a></li>
+                <li><a href="actions.html">Operations &amp; Transitions</a></li>
+                <li><a href="variablesconstants.html">Variables &amp; Constants</a></li>
+                <li><a href="macros.html">Macros</a></li>
+                <li><a href="documents.html">Documents</a></li>
+                <li><a href="reports.html">Reports</a></li>
+                <li><a href="group-tables.html">Group Tables</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="odata.html">OData</a></li>
+            </ul>
+
+        </nav>
+
+    </header>
+
+    <div class="intro">
+        <div class="row">
+            <h1>Specification Forms</h1>
+            <p>This page provides example code for creating a Specification and rendering a Form with the Integration Theme.</p>
+            <p class="margin-bottom-large">It also demonstrates registering custom Form navigation controls and Specification event listeners.</p>
+        </div>
+    </div>
+
+    <main class="row">
+
+        <div id="config-message" class="margin-bottom-xlarge">
+            The shared <a href="config.js" target="_blank" title="View config file"><code>config.js</code></a> file for these examples is incomplete. Enter your own settings for the examples to function.
+        </div>
+
+        <div id="forms" class="code-heading">
+            <h2 id="render-form">Render a Specification Form</h2>
+
+            <button data-code-toggle="form-render" class="code-toggle">
+                <svg class="icon"><use xlink:href="assets/ui/icons.svg#code"></use></svg>
+                <span>Show</span> Sample Code
+            </button>
+
+            <a class="doc-link" href="help/client/classes/Specification.html#render" target="_blank">
+                View in SDK Docs
+                <svg class="icon"><use xlink:href="assets/ui/icons.svg#external"></use></svg>
+            </a>
+
+            <div data-code-preview="form-render" class="code-preview">
+                <button data-code-type="basic" class="active">Basic</button>
+                <button data-code-type="advanced">Advanced</button>
+                <div data-code-type="basic">
+                    <pre class="language-javascript"><code data-src="assets/js/sdk-snippet/form-render.js"></code></pre>
+                </div>
+                <div data-code-type="advanced" class="hidden">
+                    <pre class="language-javascript"><code data-src="assets/js/sdk-example/form-render.js"></code></pre>
+                    <pre class="language-html"><code data-src="assets/html/sdk-example/forms.html"></code></pre>
+                </div>
+            </div>
+        </div>
+
+        <p class="margin-bottom-large">Custom navigation controls can be registered to page elements, and their visibility controlled automatically when enabled.</p>
+
+<!--
+    -----------------------------
+        START EXAMPLE
+    -----------------------------
+-->
+
+    <div id="form-output" class="margin-bottom-large">
+        <h4>Loading...</h4>
+    </div>
+
+    <button id="form-button-prev">Previous</button>
+    <button id="form-button-next">Next</button>
+    <button id="form-button-ok">Ok</button>
+    <button id="form-button-cancel">Cancel</button>
+
+    <hr class="large" />
+
+    <h2 id="react-to-events" class="margin-bottom">React to Specification events</h2>
+
+    <p><strong>Once rendered</strong>, a Specification exposes methods to register and react to events as required.</p>
+    <p class="margin-bottom-large">For more information and sample code, see the <a href="events.html#specification-events">Events</a> example.</p>
+
+    <div class="note-box">
+        <p><strong>Example:</strong> Open the browser console on this page and interact with the Form rendered above to view any events fired and data that is returned.</p>
+    </div>
+
+    <hr class="large" />
+
+    <!-- Code Preview ONLY -->
+    <div class="code-heading">
+        <h2 id="get-form-data">Get Specification Form data</h2>
+
+        <button data-code-toggle="form-data" class="code-toggle">
+            <svg class="icon"><use xlink:href="assets/ui/icons.svg#code"></use></svg>
+            <span>Show</span> Sample Code
+        </button>
+
+        <a class="doc-link" href="help/client/classes/DriveWorksLiveClient.html#getSpecificationFormData" target="_blank">
+            View in SDK Docs
+            <svg class="icon"><use xlink:href="assets/ui/icons.svg#external"></use></svg>
+        </a>
+
+        <div data-code-preview="form-data" class="code-preview">
+            <button data-code-type="basic" class="active">Basic</button>
+            <button data-code-type="advanced">Advanced</button>
+            <div data-code-type="basic">
+                <pre class="language-javascript"><code data-src="assets/js/sdk-snippet/form-data.js"></code></pre>
+            </div>
+            <div data-code-type="advanced" class="hidden">
+                <pre class="language-javascript"><code data-src="assets/js/sdk-example/form-data.js"></code></pre>
+                <pre class="language-html"><code data-src="assets/html/sdk-example/form-data.html"></code></pre>
+            </div>
+        </div>
+    </div>
+    <!-- END Preview -->
+
+    <p>You can access the same Form data used to render the Form above for your own use, such as a custom Form renderer.</p>
+    <p class="margin-bottom-large">The data shown below represents the Form rendered above. Update your Form and press the button to get the latest data.</p>
+
+    <button onclick="getSpecificationFormData()" class="button margin-bottom-large">
+        Get latest Form data
+    </button>
+
+    <pre id="form-data" class="code-scroll">Loading...</pre>
+
+    <script src="http://www.cmtruckslive.com/DriveWorksLiveIntegrationClient.min.js"></script>
+    <script src="config.js"></script>
+    <script src="assets/js/sdk-example/forms.js"></script>
+
+<!--
+    -----------------------------
+        END EXAMPLE
+    -----------------------------
+-->
+
+    </main>
+
+    <footer>&copy; DriveWorks Ltd 2024. All rights reserved.</footer>
+
+    <!-- Help File Scripts -->
+    <script src="assets/js/vendor/highlight.min.js"></script>
+    <script src="assets/js/help-file-functions.js"></script>
+
+</body>
+
+</html>

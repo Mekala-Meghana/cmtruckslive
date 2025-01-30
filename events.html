@@ -1,0 +1,276 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Events - Client SDK Examples | Integration Theme</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/vendor/highlight.vs2015.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap">
+
+</head>
+
+<body class="example-events">
+
+    <header>
+
+        <nav class="main-nav">
+
+            <a href="index.html" title="Home | Integration Theme" class="logo">
+                <img src="assets/ui/logo.svg" alt="DriveWorks" />
+            </a>
+
+            <label for="menu-state" class="menu-toggle" title="Menu">
+                <svg class="icon"><use xlink:href="assets/ui/icons.svg#menu"></use></svg>
+            </label>
+            <input type="checkbox" id="menu-state" class="menu-state" />
+
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="home.html" class="current">Client SDK Examples</a></li>
+                <li><a href="example-sites">Example Sites</a></li>
+                <li><a href="help/client">Client SDK Docs</a></li>
+                <li><a href="help/server">Server API Docs</a></li>
+                <li>
+                    <a href="https://docs.driveworkspro.com/Topic/IntegrationThemeLive" target="_blank">
+                        <svg class="icon"><use xlink:href="assets/ui/icons.svg#external"></use></svg>
+                        DriveWorks Help
+                    </a>
+                </li>
+            </ul>
+
+        </nav>
+
+        <nav class="sub-nav">
+
+            <label for="sub-nav-state" class="sub-nav-toggle" title="Menu">
+                <span>Choose an SDK Example</span>
+                <svg class="icon"><use xlink:href="assets/ui/icons.svg#arrow-down"></use></svg>
+            </label>
+            <input type="checkbox" id="sub-nav-state" />
+
+            <ul>
+                <li><a href="home.html">Intro</a></li>
+                <li><a href="login.html">Login &amp; Logout</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="specifications.html">Specifications</a></li>
+                <li><a href="forms.html">Specification Forms</a></li>
+                <li><a href="actions.html">Operations &amp; Transitions</a></li>
+                <li><a href="variablesconstants.html">Variables &amp; Constants</a></li>
+                <li><a href="macros.html">Macros</a></li>
+                <li><a href="documents.html">Documents</a></li>
+                <li><a href="reports.html">Reports</a></li>
+                <li><a href="group-tables.html">Group Tables</a></li>
+                <li><a href="events.html" class="current">Events</a></li>
+                <li><a href="odata.html">OData</a></li>
+            </ul>
+
+        </nav>
+
+    </header>
+
+    <div class="intro">
+        <div class="row">
+
+            <h1>Events (Client &amp; Specification)</h1>
+            <p class="margin-bottom-large">This page provides example code for handling a range of Client and Specification events.</p>
+
+            <ul>
+                <li><a href="#client-events">Client events</a></li>
+                <li><a href="#specification-events">Specification events</a></li>
+            </ul>
+
+        </div>
+    </div>
+
+    <main class="row">
+
+        <div id="config-message" class="margin-bottom-xlarge">
+            The shared <a href="config.js" target="_blank" title="View config file"><code>config.js</code></a> file for these examples is incomplete. Enter your own settings for the examples to function.
+        </div>
+
+<!--
+    -----------------------------
+        START EXAMPLE
+    -----------------------------
+-->
+
+    <!-- Code Preview ONLY -->
+    <div id="client" class="code-heading">
+        <h2 id="client-events">React to Client events</h2>
+
+        <button data-code-toggle="client-events" class="code-toggle">
+            <svg class="icon"><use xlink:href="assets/ui/icons.svg#code"></use></svg>
+            <span>Show</span> Sample Code
+        </button>
+
+        <a class="doc-link" href="help/client/classes/DriveWorksLiveClient.html#responseSuccessDelegate" target="_blank">
+            View in SDK Docs
+            <svg class="icon"><use xlink:href="assets/ui/icons.svg#external"></use></svg>
+        </a>
+
+        <div data-code-preview="client-events" class="code-preview">
+            <button data-code-type="basic" class="active">Basic</button>
+            <button data-code-type="advanced">Advanced</button>
+            <div data-code-type="basic">
+                <pre class="language-javascript"><code data-src="assets/js/sdk-snippet/client-events.js"></code></pre>
+            </div>
+            <div data-code-type="advanced" class="hidden">
+                <pre class="language-javascript"><code data-src="assets/js/sdk-example/client-events.js"></code></pre>
+            </div>
+        </div>
+    </div>
+    <!-- END Preview -->
+
+    <div class="note-box note-compact margin-bottom-large">
+        <p><strong>Note:</strong> this feature requires DriveWorks 18.1 and above.</p>
+    </div>
+
+    <p>Once created, the DriveWorks Live Client exposes methods to register and react to success/error events manually.</p>
+    <ul class="margin-bottom-large">
+        <li>
+            <code class="bold"><a href="help/client/classes/DriveWorksLiveClient.html#responseSuccessDelegate" target="_blank">responseSuccessDelegate</a></code>
+            - The Client has received a successful response from the server.
+        </li>
+        <li>
+            <code class="bold"><a href="help/client/classes/DriveWorksLiveClient.html#responseErrorDelegate" target="_blank">responseErrorDelegate</a></code>
+            - The Client has received an error response from the server.
+            <ul>
+                <li>Tip: Default error response handling can be skipped entirely using <code>return true;</code></li>
+            </ul>
+        </li>
+    </ul>
+
+    <p>See sample code for example use cases.</p>
+
+    <hr />
+
+    <h2 id="specification-events" class="margin-bottom-large">React to Specification events</h2>
+
+    <h3 id="register-delegates">Register delegates</h3>
+    <div>
+        <button data-code-toggle="specification-delegates" class="code-toggle">
+            <svg class="icon"><use xlink:href="assets/ui/icons.svg#code"></use></svg>
+            <span>Show</span> Sample Code
+        </button>
+        <div data-code-preview="specification-delegates" class="code-preview">
+            <button data-code-type="basic" class="active">Basic</button>
+            <button data-code-type="advanced">Advanced</button>
+            <div data-code-type="basic">
+                <pre class="language-javascript"><code data-src="assets/js/sdk-snippet/specification-delegates.js"></code></pre>
+            </div>
+            <div data-code-type="advanced" class="hidden">
+                <pre class="language-javascript"><code data-src="assets/js/sdk-example/specification-delegates.js"></code></pre>
+            </div>
+        </div>
+    </div>
+
+    <p class="margin-bottom"><strong>Once rendered</strong>, a Specification exposes methods to register and react to events as required.</p>
+
+    <ul class="margin-bottom">
+        <li id="registerSpecificationClosedDelegate" class="margin-bottom">
+            <code class="bold"><a href="help/client/classes/Specification.html#registerSpecificationClosedDelegate" target="_blank">registerSpecificationClosedDelegate</a></code>
+            <ul><li>The Specification has been closed e.g. following an Action.</li></ul>
+        </li>
+        <li id="registerSpecificationCancelledDelegate" class="margin-bottom">
+            <code class="bold"><a href="help/client/classes/Specification.html#registerSpecificationCancelledDelegate" target="_blank">registerSpecificationCancelledDelegate</a></code>
+            <ul><li>The Specification has been cancelled e.g. via a Macro or timeout.</li></ul>
+        </li>
+        <li id="registerConstantValueChangedDelegate" class="margin-bottom">
+            <code class="bold"><a href="help/client/classes/Specification.html#registerConstantValueChangedDelegate" target="_blank">registerConstantValueChangedDelegate</a></code>
+            <ul><li>The value of a Constant in the Specification has changed.</li></ul>
+        </li>
+        <li id="registerVariableValueChangedDelegate" class="margin-bottom">
+            <code class="bold"><a href="help/client/classes/Specification.html#registerVariableValueChangedDelegate" target="_blank">registerVariableValueChangedDelegate</a></code>
+            <ul><li>The value of a Variable in the Specification has changed.</li></ul>
+        </li>
+    </ul>
+
+    <p class="margin-bottom-xlarge">See sample code for example use cases.</p>
+
+    <h3 id="event-listeners">Listen for custom events</h3>
+    <div>
+        <button data-code-toggle="specification-events" class="code-toggle">
+            <svg class="icon"><use xlink:href="assets/ui/icons.svg#code"></use></svg>
+            <span>Show</span> Sample Code
+        </button>
+        <div data-code-preview="specification-events" class="code-preview">
+            <button data-code-type="basic" class="active">Basic</button>
+            <button data-code-type="advanced">Advanced</button>
+            <div data-code-type="basic">
+                <pre class="language-javascript"><code data-src="assets/js/sdk-snippet/specification-events.js"></code></pre>
+            </div>
+            <div data-code-type="advanced" class="hidden">
+                <pre class="language-javascript"><code data-src="assets/js/sdk-example/specification-events.js"></code></pre>
+            </div>
+        </div>
+    </div>
+
+    <p>You can listen for custom Specification events and access the data returned.</p>
+
+    <ul>
+        <li>
+            <code class="bold">ActionsUpdated</code>
+            <ul>
+                <li>Fired when Actions have been updated.</li>
+                <li>Returns details of Actions (Transitions/Operations) - as <code class="bold"><a href="help/client/interfaces/DataTypes.ActionsUpdatedData.html" target="_blank">ActionsUpdatedData</a></code></li>
+            </ul>
+        </li>
+        <li>
+            <code class="bold">ControlUpdated</code>
+            <ul>
+                <li>Fired when a Control has updated.</li>
+                <li>Returns details of the updated Control - as <code class="bold"><a href="help/client/interfaces/DataTypes.ControlUpdatedData.html" target="_blank">ControlUpdatedData</a></code></li>
+            </ul>
+        </li>
+        <li>
+            <code class="bold">FormUpdated</code>
+            <ul>
+                <li>Fired when the content of the Form has updated.</li>
+                <li>Returns details of the rendered Form following updates - as <code class="bold"><a href="help/client/interfaces/DataTypes.FormUpdatedData.html" target="_blank">FormUpdatedData</a></code></li>
+            </ul>
+        </li>
+        <li>
+            <code class="bold">TasksUpdated</code>
+            <ul>
+                <li>Fired when available Tasks have been updated.</li>
+                <li>Returns details of available Tasks - as <code class="bold"><a href="help/client/interfaces/DataTypes.TaskList.html" target="_blank">TaskList</a></code></li>
+            </ul>
+        </li>
+        <li>
+            <code class="bold">PreviewLoaded</code>
+            <ul>
+                <li>Fired when a 3D Preview Box Control has loaded.</li>
+                <li>Returns details of the Preview control that loaded - as <code class="bold"><a href="help/client/interfaces/DataTypes.PreviewLoadedData.html" target="_blank">PreviewLoadedData</a></code></li>
+            </ul>
+        </li>
+    </ul>
+
+    <p>See sample code for example use cases.</p>
+
+    <script src="../DriveWorksLiveIntegrationClient.min.js"></script>
+    <script src="config.js"></script>
+
+<!--
+    -----------------------------
+        END EXAMPLE
+    -----------------------------
+-->
+
+    </main>
+
+    <footer>&copy; DriveWorks Ltd 2024. All rights reserved.</footer>
+
+    <!-- Help File Scripts -->
+    <script src="assets/js/vendor/highlight.min.js"></script>
+    <script src="assets/js/help-file-functions.js"></script>
+
+</body>
+
+</html>
